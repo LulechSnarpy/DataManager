@@ -38,7 +38,7 @@ public class PhotoChooser2Test {
 			 * @
 			 * @  输出文件路径
 			 * */
-			pc2.chooseFile("C:/Users/Administrator/Desktop/DataManager/6666666666666666666", "C:/Users/Administrator/Desktop/DataManager/SelectiveSearch", "D:/pass/", "D:/fail/", "file/IOU_LIST_1.txt");
+			pc2.chooseFile("D:/6666666666666666666", "D:/6666666666666666666", "D:/pass/", "D:/fail/", "file/IOU_LIST_1.txt");
 		} catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

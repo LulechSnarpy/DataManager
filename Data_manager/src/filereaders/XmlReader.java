@@ -124,14 +124,14 @@ public class XmlReader {
 		}
 	}
 	
-	public static void main(String[] args) throws FileNotFoundException, DocumentException {
-		XmlReader xr = new XmlReader();
-		System.out.println("IS THIS WORKING?");
-		MyXml mx = xr.readAll("file/204044.xml");
-		ArrayList<MyObj> obl = mx.getObj();
-		for(int i=0; i<obl.size(); i++){
-			
-			System.out.println(obl.get(i).difficult);
-		}
-	}
+//	public static void main(String[] args) throws FileNotFoundException, DocumentException {
+//		XmlReader xr = new XmlReader();
+//		System.out.println("IS THIS WORKING?");
+//		MyXml mx = xr.readAll("file/204044.xml");
+//		ArrayList<MyObj> obl = mx.getObj();
+//		for(int i=0; i<obl.size(); i++){
+//			
+//			System.out.println(obl.get(i).difficult);
+//		}
+//	}
 }
