@@ -1,25 +1,24 @@
-package test;
+package runing;
 
 import java.io.File;
 import java.util.ArrayList;
 
 import com.fileio.PathGeter;
 
-import filecorrector.ReName;
+import filecorrector.ConvertImageFile;
 
-public class FileReNameTest {
+public class ConvertImageFileTest {
 	public static void main(String[] args) {
-		ReName rn = new ReName();
 		PathGeter pg = new PathGeter();
 		pg.init();
-		ArrayList<String> paths = pg.getImageFiles("D:/(201)-市南山东路与泰州四路监控_2015216_145449");//图片名都改为JPG的路径
+		ArrayList<String> paths = pg.getImageFiles("D:/666666/(100)-201511301657386884",true);//需要修改的png图片的路径
 		for(int i=0; i<paths.size(); i++){
 			String path = paths.get(i);
 			File f = new File(path);
 			String oldname = f.getName();
-			String newname = oldname.replace("jpg", "JPG");
+			//String newname = oldname.replace("jpg", "JPG");
 			path = f.getParent();
-			rn.renameFile(path, oldname, newname);
+			ConvertImageFile.ConverImage(path, oldname);
 		}
 	}
 }

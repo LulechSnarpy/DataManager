@@ -9,7 +9,7 @@ public class ConvertImageFile {
 
 	public static void ConverImage(String path,String oldname) {
 		BufferedImage bufferedImage;
-	
+		path = path+"/";
 	    try {
 	
 	      //read image file
@@ -25,8 +25,8 @@ public class ConvertImageFile {
 	
 	      // write to jpeg file
 	      ImageIO.write(newBufferedImage, "jpg", new File(path+oldname.replace("png", "JPG").replace("PNG","JPG")));
-	
-	
+	      File file = new File(path+oldname);//É¾³ýÔ­ÎÄ¼þ
+	      file.delete();
 	    } catch (IOException e) {
 	
 	      e.printStackTrace();

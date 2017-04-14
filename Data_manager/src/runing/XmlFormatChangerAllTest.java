@@ -1,4 +1,4 @@
-package test;
+package runing;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class XmlFormatChangerAllTest {
 	public static void main(String[] args) {
 		PathGeter pg = new PathGeter();
 		pg.init();
-		ArrayList<String> paths = pg.getXmlFiles("");//Â·¾¶
+		ArrayList<String> paths = pg.getXmlFiles("D:/666666_well_done");//Â·¾¶
 		for(int i=0; i<paths.size(); i++){
 			MyXml mx = null;
 			XmlReader xr = new XmlReader();
@@ -23,6 +23,7 @@ public class XmlFormatChangerAllTest {
 				mx = xr.readAll(paths.get(i));
 				XmlWriter xw = new XmlWriter(paths.get(i), mx);
 				xw.createDocument();
+				
 			} catch (DocumentException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -13,7 +13,7 @@ public class MyXml {
 		this.folder = "logos";
 		this.sodatebase = "The logs Database";
 		this.sosource = "The logs Database";
-		this.soimage = "trafic video of Qingdao";
+		this.soimage = "traffic video of Qingdao";
 		this.oname = "Qingdao University";
 		this.sidepth = "3";
 		this.segmented = "0";

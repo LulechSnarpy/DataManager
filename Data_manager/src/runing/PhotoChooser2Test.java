@@ -1,4 +1,4 @@
-package test;
+package runing;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
