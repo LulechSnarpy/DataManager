@@ -13,14 +13,20 @@ import org.dom4j.io.SAXReader;
 
 import bean.MyXml;
 import bean.MyObj;
+
+/*
+ * 读取xml文件
+ * */
 public class XmlReader {
 	private SAXReader reader = null;
 	private MyXml mx;
-
+	
+	/*使用前初始化读取类*/
 	public XmlReader() {
 		reader = new SAXReader();
 	}
 	
+	/*在控制台打印信息*/
 	public void fail(Object obj){
 		System.out.println(obj);
 	}
@@ -44,6 +50,7 @@ public class XmlReader {
 //        }
 //    }
 	
+	/*读取我们自己定义的xml文件返回Myxml数据作为xml信息*/
 	public MyXml readAll(String path) throws DocumentException{
 		mx = new MyXml();
 		Document doc = reader.read(new File(path));
@@ -51,6 +58,7 @@ public class XmlReader {
 		mx.setFolder(doc.selectSingleNode("//folder").getText());
 		mx.setFilename(doc.selectSingleNode("//filename").getText());
 		mx.setSodatebase(doc.selectSingleNode("//source/database").getText());
+//		mx.setSosource(doc.selectSingleNode("//source/annotation").getText());//如果出错是因为部分数据使用的是source而不是annotation
 		mx.setSosource(doc.selectSingleNode("//source/source").getText());
 		mx.setSoimage(doc.selectSingleNode("//source/image").getText());
 		mx.setMname(doc.selectSingleNode("//owner/name").getText());
@@ -61,6 +69,13 @@ public class XmlReader {
 		mx.setSegmented(doc.selectSingleNode("//segmented").getText());
 		@SuppressWarnings("unchecked")
 		List<Element> obl = doc.selectNodes("//object"); 
+		mx.setAllObj(readAllMyobj(obl));
+		return mx;
+	}
+
+	/*读取文件中的object属性内容返回MyObj数组*/
+	public ArrayList<MyObj> readAllMyobj(List<Element> obl) {
+		ArrayList<MyObj> myobjs = new ArrayList<MyObj>();
 		Iterator<Element> obt = obl.iterator();
 		while(obt.hasNext()){
 			MyObj obj = new MyObj();
@@ -79,11 +94,36 @@ public class XmlReader {
 			obj.ymin = obc.get(1).getText();
 			obj.xmax = obc.get(2).getText();
 			obj.ymax = obc.get(3).getText();
-			mx.setObj(obj);
+			myobjs.add(obj);
 		}
-		return mx;
+		return myobjs;
 	}
 	
+	/*读取文件中的object框位置内容返回MyObj数组*/
+	public ArrayList<MyObj> readAllMyobjBox(String path) throws DocumentException {
+		Document doc = reader.read(new File(path));
+		ArrayList<MyObj> myobjs = new ArrayList<MyObj>();
+		Iterator<Element> obt = doc.selectNodes("//object//bndbox").iterator();
+		while(obt.hasNext()){
+			MyObj obj = new MyObj();
+			@SuppressWarnings("unchecked")
+			Element obz = obt.next();
+			List<Element> obc = obz.elements();
+			obj.xmin = obc.get(0).getText();
+			obj.ymin = obc.get(1).getText();
+			obj.xmax = obc.get(2).getText();
+			obj.ymax = obc.get(3).getText();
+//			System.out.println(obc.get(0).getName());
+//			System.out.println(obj.xmin);
+//			System.out.println(obj.ymin);
+//			System.out.println(obj.xmax);
+//			System.out.println(obj.ymax);
+			myobjs.add(obj);
+		}
+		return myobjs;
+	}
+	
+	/*在控制台输出Myxml中的数据*/
 	public void printAll(MyXml mx){
 		System.out.println("annotation");
 		System.out.println("  folder:"+mx.getFolder());
@@ -104,6 +144,7 @@ public class XmlReader {
 		printObj(mx.getObj());
 	}
 	
+	/*在控制台输出MyObj中的数据*/
 	public void printObj(ArrayList<MyObj> obl){
 		Iterator<MyObj> obj = obl.iterator();
 		while(obj.hasNext()){

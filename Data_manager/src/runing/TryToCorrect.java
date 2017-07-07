@@ -11,6 +11,7 @@ import org.dom4j.DocumentException;
 
 import filecorrector.XmlCorrector;
 
+/*修正之前软件产生的xml文件的错误执行程序*/
 public class TryToCorrect {
 	private static String r;
 	private static ArrayList<String> filelist;

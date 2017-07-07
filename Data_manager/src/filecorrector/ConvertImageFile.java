@@ -4,8 +4,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-
+	/*pngתjpg*/
 public class ConvertImageFile {
+
 
 	public static void ConverImage(String path,String oldname) {
 		BufferedImage bufferedImage;

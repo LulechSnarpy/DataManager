@@ -12,6 +12,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
+/*修正之前软件产出的xml中部分重复的问题*/
 public class XmlCorrector {
 	private SAXReader reader = null;
 	public XmlCorrector() {

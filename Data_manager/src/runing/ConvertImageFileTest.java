@@ -7,6 +7,8 @@ import com.fileio.PathGeter;
 
 import filecorrector.ConvertImageFile;
 
+
+/*png转jpg测试文件*/
 public class ConvertImageFileTest {
 	public static void main(String[] args) {
 		PathGeter pg = new PathGeter();
@@ -18,7 +20,7 @@ public class ConvertImageFileTest {
 			String oldname = f.getName();
 			//String newname = oldname.replace("jpg", "JPG");
 			path = f.getParent();
-			ConvertImageFile.ConverImage(path, oldname);
+			ConvertImageFile.ConverImage(path, oldname);//调用png转jpg的函数
 		}
 	}
 }

@@ -11,11 +11,13 @@ import bean.MyXml;
 import filereaders.XmlReader;
 import filewriters.XmlWriter;
 
+/*改变之前生成的xml中部分的字符大小问题*/
 public class XmlFormatChangerAllTest {
+
 	public static void main(String[] args) {
 		PathGeter pg = new PathGeter();
 		pg.init();
-		ArrayList<String> paths = pg.getXmlFiles("D:/666666_well_done");//路径
+		ArrayList<String> paths = pg.getXmlFiles("file");//路径使用时记得修改路径
 		for(int i=0; i<paths.size(); i++){
 			MyXml mx = null;
 			XmlReader xr = new XmlReader();

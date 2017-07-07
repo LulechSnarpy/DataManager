@@ -13,6 +13,7 @@ import bean.MyXml;
 import filereaders.XmlReader;
 import filewriters.TextWriter;
 
+/*复制满足指定条件的图片*/
 public class Chooser1 {
 	public void chooseClean(String path,String path2) throws DocumentException, IOException {
 		PathGeter pg = new PathGeter();

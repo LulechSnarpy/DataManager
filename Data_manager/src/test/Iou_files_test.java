@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlList;
 import com.fileio.FileIO;
 import com.fileio.PathGeter;
 
+/*找出命名错误的文件*/
 public class Iou_files_test {
 	private static String oldpath = "G://6666666666666666666//";
 	private static String newpath;

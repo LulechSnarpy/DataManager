@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="lib/jaxen-1.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/jmatio.jar"/>
 	<classpathentry kind="lib" path="lib/ujmp-complete-0.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/jxl.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

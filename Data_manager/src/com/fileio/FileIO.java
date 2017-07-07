@@ -7,6 +7,11 @@ import java.io.IOException;
 
 public class FileIO {
 	
+	/*
+	 * 复制单个文件
+	 * @ 原文件路径
+	 * @  需要复制到的文件路径
+	 * */
 	public static void copySingleFile(String oldpath,String newpath) throws IOException{
 		File ofile = new File(oldpath);
 		File nfile = new File(newpath);
@@ -21,6 +26,11 @@ public class FileIO {
 		out.close();
 	}
 	
+	/*
+	 * 复制文件夹及其内容
+	 * @ 原文件路径
+	 * @  需要复制到的文件路径
+	 * */
 	public static void copyAllFile(String oldpath,String newpath) throws IOException{
 		 File root = new File(oldpath);
 	     File[] files = root.listFiles();
@@ -35,6 +45,9 @@ public class FileIO {
 	     }
 	}
 	
+	/*
+	 * 检查文件路径是否存在，不存在就新建一个
+	 * */
 	public static void checkAndCreateFile(File file) throws IOException{
 		if(!file.exists()){
 			File pfile = file.getParentFile();

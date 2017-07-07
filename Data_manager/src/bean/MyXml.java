@@ -2,13 +2,14 @@ package bean;
 
 import java.util.ArrayList;
 
+/*自定义的类用来储蓄xml单个文件的信息*/
 public class MyXml {
 	private String folder,filename;
 	private String sodatebase,sosource,soimage;//source:database\source\image
 	private String oname,mname;//owner:name,marker:name;
 	private String siwidth,siheight,sidepth;//size:width\height\depth
 	private String segmented;
-	private ArrayList<MyObj> obj;//object list
+	private ArrayList<MyObj> obj;//object list 
 	public MyXml(){
 		this.folder = "logos";
 		this.sodatebase = "The logs Database";
@@ -94,6 +95,9 @@ public class MyXml {
 	}
 	public void setObj(MyObj obj) {
 		this.obj.add(obj);
+	}
+	public void setAllObj(ArrayList<MyObj> objs){
+		this.obj = objs;
 	}
 	
 }

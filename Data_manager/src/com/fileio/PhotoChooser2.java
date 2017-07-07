@@ -20,12 +20,14 @@ import filereaders.XmlReader;
 import filewriters.TextWriter;
 import operation.Iou_Operation;
 
+/*找出符合要求的文件和生成0.9,0.7,0.5下IOU的信息*/
 public class PhotoChooser2 {
 //	private  String oldpath = "G://6666666666666666666//";
 //	private  String newpath = "E://z//";
 	private static final String XMLFOLDER = "xml//";
 	private StringBuilder sb;
 	
+	/*复制xml文件和图片文件*/
 	public void movePhoto(String oldimage,String oldxml,String newpath) throws IOException{
 		File image = new File(oldimage);
 		File xml = new File(oldxml);
@@ -55,15 +57,18 @@ public class PhotoChooser2 {
 			ArrayList<MyObj> mo = tr.readBox(txt.get(i),true);//读入groundTruth boolean false 不改变 x,y 
 			int f = check(mx,mo);
 			System.out.println(i);
-			if(f == 1){
+			
+			if(f == 1){//判断文件是否符合复制要求（不需要转移文件可以注释）
 				movePhoto(image.get(i), xml.get(i), newpath1);
 			}else if(f == -1){
 				movePhoto(image.get(i), xml.get(i), newpath2);
 			}
+			
 		}
 		TextWriter.writeText(output, sb.toString());
 	}
 	
+	/*判断文件是否符合复制的要求，并记录iou*/
 	public int check(MyXml mx,ArrayList<MyObj> proposals){
 		int f = 0;
 		Iou_Operation iou = new Iou_Operation();

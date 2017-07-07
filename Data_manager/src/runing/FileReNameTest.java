@@ -7,12 +7,13 @@ import com.fileio.PathGeter;
 
 import filecorrector.ReName;
 
+/*修正部分图片为jpg，实际需要png的执行程序*/
 public class FileReNameTest {
 	public static void main(String[] args) {
 		ReName rn = new ReName();
 		PathGeter pg = new PathGeter();
 		pg.init();
-		ArrayList<String> paths = pg.getImageFiles("D:/666666/(100)-201511301657386884");//图片名都改为JPG的路径
+		ArrayList<String> paths = pg.getImageFiles("D:/666666/(100)-201511301657386884");//需要都改为PNG的图片路径
 		for(int i=0; i<paths.size(); i++){
 			String path = paths.get(i);
 			File f = new File(path);

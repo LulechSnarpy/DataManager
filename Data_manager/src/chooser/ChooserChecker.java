@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import com.fileio.PathGeter;
 
+
+/*测试找到了多少个图片文件*/
 public class ChooserChecker {
 	public static void main(String[] args) {
 		PathGeter pg = new PathGeter();

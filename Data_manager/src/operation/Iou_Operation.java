@@ -11,6 +11,8 @@ public class Iou_Operation {
 	private ArrayList<ArrayList<Double>> ioulist;//存放iou的二维数组
 	private ArrayList<Integer> matchNum;//存放符合标准的个数的数组
 	private ArrayList<Double> rr;//存放召回率的数组
+	
+	
 	/*获取IOU,RecallRate,匹配的数目
 	 * @proposals 候选框数组
 	 * @groundTruth 
@@ -124,6 +126,9 @@ public class Iou_Operation {
 		}
 		return bo;
 	}
+	
+
+	
 	//打印boxlist的内容
 	public void showBox(ArrayList<MyBox> bol) {
 		Iterator<MyBox> bot = bol.iterator();
@@ -143,5 +148,5 @@ public class Iou_Operation {
 	public ArrayList<Double> getRr() {
 		return rr;
 	}
-
+	
 }

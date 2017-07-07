@@ -17,6 +17,7 @@ import bean.MyObj;
 import bean.MyXml;
 import filereaders.XmlReader;
 
+/*找到并并复制所需文件到指定的路径，用法和PhotoChooser2相似*/
 public class PhotoChooser {
 //	private  String oldpath = "G://6666666666666666666//";
 //	private  String newpath = "E://z//";
@@ -56,6 +57,7 @@ public class PhotoChooser {
 		
 	}
 	
+	/*条件判断函数*/
 	public boolean check(MyXml mx){
 		if(mx.getObj().size()>=10) return false;
 		Iterator<MyObj> mo = mx.getObj().iterator();

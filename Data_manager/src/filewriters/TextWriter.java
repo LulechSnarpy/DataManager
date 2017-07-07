@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import com.fileio.FileIO;
 
+/*将字符串写入文件*/
 public class TextWriter {
 	public static void writeText(String path,String z) throws IOException{
 		File file = new File(path);

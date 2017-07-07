@@ -60,7 +60,7 @@ public class TextReader {
 		while(sc.hasNext()){
 			MyObj obj = new MyObj();
 			String t = sc.nextLine();
-			String tm[] = t.split(" ");
+			String tm[] = t.split(" ");//以txt输出文件为准数据间的分割符 一般为 \t 和空格
 			if(tran){
 				obj.xmin = tm[1];
 				obj.ymin = tm[0];
@@ -71,6 +71,10 @@ public class TextReader {
 				obj.ymin = tm[1];
 				obj.xmax = tm[2];
 				obj.ymax = tm[3];
+//				System.out.println(obj.xmin);
+//				System.out.println(obj.ymin);
+//				System.out.println(obj.xmax);
+//				System.out.println(obj.ymax);
 			}
 			obl.add(obj);
 		}

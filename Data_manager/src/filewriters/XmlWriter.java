@@ -19,10 +19,12 @@ import org.dom4j.io.XMLWriter;
 import bean.MyObj;
 import bean.MyXml;
 
+/*写入xml文件的类*/
 public class XmlWriter {
 	private String path = null;
 	private MyXml mx;
 	
+	//path写入文件的路径，mx写入的xml信息
 	public XmlWriter(String path,MyXml mx){
 		this.path = path;
 		this.mx = mx;
@@ -85,6 +87,8 @@ public class XmlWriter {
 		clearHeadLine();
 	}
 	
+	
+	/*删除txt中多余的开头*/
 	public void clearHeadLine() throws IOException{
 		File f = new File(path);
 		FileInputStream in= new FileInputStream(f);

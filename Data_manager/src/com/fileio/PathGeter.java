@@ -3,16 +3,23 @@ package com.fileio;
 import java.io.File;
 import java.util.ArrayList;
 
+
+/*
+ * 获取所有指定尾缀的文件的路径返回文件路径字符串数组
+ * */
 public class PathGeter {
 	private ArrayList<String> xmlfilelist;
 	private ArrayList<String> imagefilelist;
 	private ArrayList<String> textfilelist;
+	
+	/*获取路径前需要初始化*/
 	public void init(){
 		xmlfilelist = new ArrayList<>();
 		imagefilelist = new ArrayList<>();
 		textfilelist = new ArrayList<>();
 	}
 	
+	/*获取指定路径下尾缀为xml的文件路径*/
 	public  ArrayList<String> getXmlFiles(String filePath){
 	     File root = new File(filePath);
 	       File[] files = root.listFiles();
@@ -32,6 +39,7 @@ public class PathGeter {
 	    return xmlfilelist;
 	}
 	
+	/*获取指定路径下尾缀为png，PNG，jpg，JPG的文件路径*/
 	public ArrayList<String> getImageFiles(String filePath){
 	     File root = new File(filePath);
 	       File[] files = root.listFiles();
@@ -51,6 +59,7 @@ public class PathGeter {
 	    return imagefilelist;
 	}
 	
+	/*获取指定路径下文件尾缀为txt的文件的文件路径*/
 	public ArrayList<String> getTextFiles(String filePath){
 	     File root = new File(filePath);
 	       File[] files = root.listFiles();
@@ -70,6 +79,8 @@ public class PathGeter {
 	    return textfilelist;
 	}
 	
+	
+	/*获取指定路径下尾缀为png,PNG的文件路径*/
 	public ArrayList<String> getImageFiles(String filePath,boolean f){
 	     File root = new File(filePath);
 	       File[] files = root.listFiles();
