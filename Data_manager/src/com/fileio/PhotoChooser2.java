@@ -57,12 +57,12 @@ public class PhotoChooser2 {
 			ArrayList<MyObj> mo = tr.readBox(txt.get(i),true);//读入groundTruth boolean false 不改变 x,y 
 			int f = check(mx,mo);
 			System.out.println(i);
-			
-			if(f == 1){//判断文件是否符合复制要求（不需要转移文件可以注释）
-				movePhoto(image.get(i), xml.get(i), newpath1);
-			}else if(f == -1){
-				movePhoto(image.get(i), xml.get(i), newpath2);
-			}
+//			
+//			if(f == 1){//判断文件是否符合复制要求（不需要转移文件可以注释）
+//				movePhoto(image.get(i), xml.get(i), newpath1);
+//			}else if(f == -1){
+//				movePhoto(image.get(i), xml.get(i), newpath2);
+//			}
 			
 		}
 		TextWriter.writeText(output, sb.toString());
