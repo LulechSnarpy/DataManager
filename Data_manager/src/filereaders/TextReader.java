@@ -60,7 +60,7 @@ public class TextReader {
 		while(sc.hasNext()){
 			MyObj obj = new MyObj();
 			String t = sc.nextLine();
-			String tm[] = t.split(" ");//以txt输出文件为准数据间的分割符 一般为 \t 和空格
+			String tm[] = t.split("\t");//以txt输出文件为准数据间的分割符 一般为 \t 和空格
 			if(tran){
 				obj.xmin = tm[1];
 				obj.ymin = tm[0];

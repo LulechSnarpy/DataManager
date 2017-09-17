@@ -10,7 +10,7 @@ import javax.annotation.processing.Completion;
 import bean.MyBox;
 import bean.MyObj;
 
-/**/
+/*计算单个proposal的iou并排序*/
 public class Iou_Operation2 {
 	private Iou_Operation iouOp;
 

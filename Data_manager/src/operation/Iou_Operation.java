@@ -8,7 +8,7 @@ import bean.MyObj;
 
 public class Iou_Operation {
 
-	private ArrayList<ArrayList<Double>> ioulist;//存放iou的二维数组
+	private ArrayList<ArrayList<Double>> ioulist;//存放iou的二维数组 最外层是pro 里层是pro与各个groundTruth的iou
 	private ArrayList<Integer> matchNum;//存放符合标准的个数的数组
 	private ArrayList<Double> rr;//存放召回率的数组
 	
@@ -33,10 +33,10 @@ public class Iou_Operation {
 		Iterator<ArrayList<Double>> iout = ioulist.iterator();
 		while (gtt.hasNext()) {
 			MyBox gtbox = gtt.next();
-			IoUOneGT(pro, gtbox);
+			IoUOneGT(pro, gtbox);//多个proposal与一个groundTruth计算iou
 		}
-		getMatchNum(standard);
-		getRecallRate(gt.size());
+		getMatchNum(standard);//根据阈值筛选个数
+		getRecallRate(gt.size());//计算召回率根据当前proposal的个数计算当前召回率
 	}
 	//计算RecallRate
 	public void getRecallRate(int total) {
@@ -68,10 +68,10 @@ public class Iou_Operation {
 		Iterator<MyBox> prot = pro.iterator();
 		while (prot.hasNext()) {
 			MyBox probox = prot.next();
-			if(iou>1 && !flag){
-				flag = true;
-				showOneBox(probox);
-			}
+//			if(iou>1 && !flag){
+//				flag = true;
+//				showOneBox(probox);
+//			}
 			iou = maxdouble(iou, IoUOpertion(probox, gt));
 			iout.next().add(iou);
 		}
@@ -148,5 +148,7 @@ public class Iou_Operation {
 	public ArrayList<Double> getRr() {
 		return rr;
 	}
-	
+	public ArrayList<Integer> getMatchNum() {
+		return matchNum;
+	}	
 }
