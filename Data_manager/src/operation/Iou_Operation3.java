@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 import org.dom4j.DocumentException;
 
 import com.fileio.FileIO;
@@ -45,8 +47,6 @@ public class Iou_Operation3 extends  Iou_Operation{
 		}
 
 		public  void getIouByProNumber(ArrayList<Double> thresholds,ArrayList<Integer> proNums,boolean isEdgeBox,boolean tran) throws RowsExceededException, WriteException{
-			rrs = new ArrayList<>();
-			matchNums = new ArrayList<>();
 			sheet = new WritableSheet[3];
 			avgrrs = new ArrayList<>();
 			for(int i=0; i<thresholds.size(); i++){
@@ -77,6 +77,8 @@ public class Iou_Operation3 extends  Iou_Operation{
 				sheet[0].addCell(new Label(0, k+2,mx.getFilename()));
 				sheet[1].addCell(new Label(0, k+2, mx.getFilename()));
 				sheet[2].addCell(new Label(0, k+2, mx.getFilename()));
+				rrs = new ArrayList<>();
+				matchNums = new ArrayList<>();
 				for(int i=0; i<thresholds.size(); i++){
 					double thre = thresholds.get(i);
 					ArrayList<MyObj>  gt = mx.getObj();
