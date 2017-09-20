@@ -36,7 +36,7 @@ public class Iou_Operation3 extends  Iou_Operation{
 		private ArrayList<MyObj> mos;
 		private ArrayList<ArrayList<Double>> rrs;
 		private  ArrayList<ArrayList<Integer>> matchNums;
-		private ArrayList<ArrayList<BigDecimal>> avgrrs;
+		private ArrayList<ArrayList<Double>> avgrrs;
 		private WritableWorkbook  workbook;
 		private WritableSheet[] sheet;
 		public Iou_Operation3(String xmlPath, String textPath, String outPath) {
@@ -50,9 +50,9 @@ public class Iou_Operation3 extends  Iou_Operation{
 			sheet = new WritableSheet[3];
 			avgrrs = new ArrayList<>();
 			for(int i=0; i<thresholds.size(); i++){
-				ArrayList<BigDecimal> avg = new ArrayList<>();
+				ArrayList<Double> avg = new ArrayList<>();
 				for(int j=0; j<proNums.size(); j++){
-					avg.add(new BigDecimal("0"));
+					avg.add(0.0);
 				}
 				avgrrs.add(avg);
 			}
@@ -89,8 +89,8 @@ public class Iou_Operation3 extends  Iou_Operation{
 						int num = proNums.get(j);
 						int lostNum = gt.size()-matchNums.get(i).get(num-1);
 						double rr = rrs.get(i).get(num-1);
-						ArrayList<BigDecimal> avg = avgrrs.get(i);
-						avg.set(j, avg.get(j).add(new BigDecimal(rr)));
+						ArrayList<Double> avg = avgrrs.get(i);
+						avg.set(j, avg.get(j)+rr);
 						sheet[0].addCell(new Label(j+1+(thresholds.size()-1)*i, k+2, rr+""));
 						sheet[1].addCell(new Label(j+1+(thresholds.size()-1)*i, k+2,lostNum+""));
 						sheet[2].addCell(new Label(j+1+(thresholds.size()-1)*i, k+2, (double)(lostNum*1.0/gt.size())+""));
@@ -100,7 +100,7 @@ public class Iou_Operation3 extends  Iou_Operation{
 			sheet[0].addCell(new Label(0,xmls.size()+2,"Æ½¾ùÖµ"));
 			for(int i=0; i<thresholds.size(); i++){
 				for(int j=0; j<proNums.size(); j++){
-					BigDecimal avgrr = avgrrs.get(i).get(j).divide(BigDecimal.valueOf(xmls.size()));
+					Double avgrr = avgrrs.get(i).get(j)/xmls.size();
 					sheet[0].addCell(new Label(j+1+(thresholds.size()-1)*i, xmls.size()+2,avgrr.toString()));
 				}
 			}
