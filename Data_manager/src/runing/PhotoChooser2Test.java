@@ -31,7 +31,6 @@ public class PhotoChooser2Test {
 //			System.out.println(i);
 //		}
 		PhotoChooser2 pc2 = new PhotoChooser2();
-		try {
 			/*
 			 * @  图片，xml所在文件夹路径
 			 * @  txt所在文件夹路径
@@ -41,12 +40,5 @@ public class PhotoChooser2Test {
 			 * @ 不需要转移文件请在chooseFile函数中注释相应位置
 			 * */
 			pc2.chooseFile("D:/6666666666666666666", "D:/6666666666666666666", "D:/pass/", "D:/fail/", "file/IOU_LIST_1.txt");
-		} catch (DocumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }

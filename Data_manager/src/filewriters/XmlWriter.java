@@ -20,17 +20,32 @@ import bean.MyObj;
 import bean.MyXml;
 
 /*写入xml文件的类*/
+/**
+ * 写入xml文件的类
+ * @version 2017_11_14
+ * @author Lulech
+ * */
 public class XmlWriter {
 	private String path = null;
 	private MyXml mx;
 	
 	//path写入文件的路径，mx写入的xml信息
+	/**
+	 * 构造函数
+	 * @param 文件路径
+	 * @param 写入文件的xml信息
+	 * */
 	public XmlWriter(String path,MyXml mx){
 		this.path = path;
 		this.mx = mx;
 	}
 	
-	public void createDocument() throws IOException{
+	
+	/**
+	 * 创建一个xml文档对象并将它写入文件
+	 * @return void
+	 * */
+	public void createDocument(){
 		Document doc = DocumentHelper.createDocument();
 		Element root = doc.addElement("annotation");
 		root.addElement("folder").setText(mx.getFolder());
@@ -77,30 +92,41 @@ public class XmlWriter {
         outputFormat.setIndent("\t"); //以四个空格方式实现缩进
         
 		doc.asXML();
-		XMLWriter output;
+		XMLWriter output = null;
 		File f= new File(path);
-		if(!f.exists()) f.createNewFile();
-		output = new XMLWriter(new FileOutputStream(f),outputFormat);
-		output.write(doc);
-		output.close();
-		
-		clearHeadLine();
+		try{
+			output = new XMLWriter(new FileOutputStream(f),outputFormat);
+			output.write(doc);
+			clearHeadLine();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			try{
+				output.close();
+			}catch(Exception ex){
+				ex.printStackTrace();
+			}
+		}
 	}
 	
 	
-	/*删除txt中多余的开头*/
-	public void clearHeadLine() throws IOException{
+	/*删除xml中多余的开头*/
+	private void clearHeadLine(){
 		File f = new File(path);
-		FileInputStream in= new FileInputStream(f);
 		ArrayList<Integer> l = new ArrayList<>();
-		int t;
-		while((t = in.read()) != -1){
-			l.add(t);
+		try(FileInputStream in= new FileInputStream(f)){
+			int t;
+			while((t = in.read()) != -1){
+				l.add(t);
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
 		}
-		in.close();
-		FileOutputStream out= new FileOutputStream(f);
-		for(int i=1; i<l.size(); i++)
-		out.write(l.get(i));
-		out.close();
+		try(FileOutputStream out= new FileOutputStream(f)){
+			for(int i=1; i<l.size(); i++)
+			out.write(l.get(i));
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
 }

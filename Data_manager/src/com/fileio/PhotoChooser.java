@@ -36,16 +36,14 @@ public class PhotoChooser {
 	public void chooseFile(String oldpath,String newpath) throws DocumentException, IOException{
 		PathGeter pg = new PathGeter();
 		XmlReader xr = new XmlReader();
-		pg.init();
 		ArrayList<String> image = pg.getImageFiles(oldpath);
 		ArrayList<String> xml = pg.getXmlFiles(oldpath);
 //		ArrayList<String> chooseImg = new ArrayList<>();
 //		ArrayList<String> chooseXml = new ArrayList<>();
-		mx = new ArrayList<>();
-		Iterator<String> xmlit = xml.iterator();
+		mx = new ArrayList<>(xml.size());
 		File n = new File(newpath);
-		while(xmlit.hasNext()){
-			mx.add(xr.readAll(xmlit.next()));
+		for(String path:xml){
+			mx.add(xr.readAll(path));
 		}
 		for(int i=0; i<mx.size(); i++){
 			if(check(mx.get(i))){
@@ -60,9 +58,7 @@ public class PhotoChooser {
 	/*Ìõ¼þÅÐ¶Ïº¯Êý*/
 	public boolean check(MyXml mx){
 		if(mx.getObj().size()>=10) return false;
-		Iterator<MyObj> mo = mx.getObj().iterator();
-		while(mo.hasNext()){
-			MyObj m = mo.next();
+		for(MyObj m : mx.getObj()){
 			if(m.difficult.equals("1")) return false;
 			if(m.shadow.equals("1")) return false;
 			if(m.area.equals("1")) return false;

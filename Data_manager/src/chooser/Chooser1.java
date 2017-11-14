@@ -17,7 +17,6 @@ import filewriters.TextWriter;
 public class Chooser1 {
 	public void chooseClean(String path,String path2) throws DocumentException, IOException {
 		PathGeter pg = new PathGeter();
-		pg.init();
 		XmlReader xr = new XmlReader();
 		StringBuilder sb1 = new StringBuilder();
 		StringBuilder sb2 = new StringBuilder();

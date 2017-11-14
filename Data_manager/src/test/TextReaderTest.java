@@ -10,13 +10,8 @@ public class TextReaderTest {
 	
 	public static void main(String[] args) {
 		TextReader tr = new TextReader();
-		try {
-			tr.readText("file/ImgCache.txt");
-			showBox(tr.readBox("file/000004_boxes.txt",true));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		tr.readText("file/ImgCache.txt");
+		showBox(tr.readBox("file/000004_boxes.txt",true));
 	}
 	
 	public static void showBox(ArrayList<MyObj> obj){

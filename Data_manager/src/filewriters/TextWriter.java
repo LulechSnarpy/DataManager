@@ -8,12 +8,25 @@ import java.io.IOException;
 import com.fileio.FileIO;
 
 /*将字符串写入文件*/
+/**
+ * 将字符串写入文件
+ * @version 2017_11_14
+ * @author Lulech
+ * */
 public class TextWriter {
-	public static void writeText(String path,String z) throws IOException{
+	/**
+	 * 将字符串写入文件
+	 * @param 文件路径
+	 * @param 要写入的内容
+	 * @return void
+	 * */
+	public static void writeText(String path,String z){
 		File file = new File(path);
 		FileIO.checkAndCreateFile(file);
-		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-		bw.write(z);
-		bw.close();
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
+			bw.write(z);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
 }

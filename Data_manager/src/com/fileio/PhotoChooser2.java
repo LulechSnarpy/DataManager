@@ -28,7 +28,7 @@ public class PhotoChooser2 {
 	private StringBuilder sb;
 	
 	/*复制xml文件和图片文件*/
-	public void movePhoto(String oldimage,String oldxml,String newpath) throws IOException{
+	public void movePhoto(String oldimage,String oldxml,String newpath){
 		File image = new File(oldimage);
 		File xml = new File(oldxml);
 		String imagepath = newpath +image.getName();
@@ -37,20 +37,18 @@ public class PhotoChooser2 {
 		FileIO.copySingleFile(oldxml, xmlpath);
 	}
 	 
-	public void chooseFile(String oldpath,String textpath,String newpath1,String newpath2,String output) throws DocumentException, IOException{
+	public void chooseFile(String oldpath,String textpath,String newpath1,String newpath2,String output){
 		PathGeter pg = new PathGeter();
 		XmlReader xr = new XmlReader();
 		TextReader tr = new TextReader();
-		sb = new StringBuilder();
+		ArrayList<String> image = pg.getImageFiles(oldpath);
+		ArrayList<String> xml = pg.getXmlFiles(oldpath);
+		ArrayList<String> txt = pg.getTextFiles(textpath);
+		sb = new StringBuilder(xml.size()*1024);
 		sb.append("文件名").append("\t\t");
 		sb.append("0.9下召回率").append("\t");
 		sb.append("0.7下召回率").append("\t");
 		sb.append("0.5下召回率").append(System.lineSeparator());
-		pg.init();
-		
-		ArrayList<String> image = pg.getImageFiles(oldpath);
-		ArrayList<String> xml = pg.getXmlFiles(oldpath);
-		ArrayList<String> txt = pg.getTextFiles(textpath);
 		
 		for(int i=0; i<xml.size(); i++){
 			MyXml mx = xr.readAll(xml.get(i));

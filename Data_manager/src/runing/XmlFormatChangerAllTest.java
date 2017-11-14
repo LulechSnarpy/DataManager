@@ -16,23 +16,14 @@ public class XmlFormatChangerAllTest {
 
 	public static void main(String[] args) {
 		PathGeter pg = new PathGeter();
-		pg.init();
 		ArrayList<String> paths = pg.getXmlFiles("file");//路径使用时记得修改路径
 		for(int i=0; i<paths.size(); i++){
 			MyXml mx = null;
 			XmlReader xr = new XmlReader();
-			try {
-				mx = xr.readAll(paths.get(i));
-				XmlWriter xw = new XmlWriter(paths.get(i), mx);
-				xw.createDocument();
+			mx = xr.readAll(paths.get(i));
+			XmlWriter xw = new XmlWriter(paths.get(i), mx);
+			xw.createDocument();
 				
-			} catch (DocumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 }

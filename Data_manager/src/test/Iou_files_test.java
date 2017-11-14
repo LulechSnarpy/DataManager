@@ -26,7 +26,6 @@ public class Iou_files_test {
 	 
 	public static void main(String[] args) {
 		PathGeter pg = new PathGeter();
-		pg.init();
 		ArrayList<String> image = pg.getImageFiles(oldpath);
 		ArrayList<String> xml = pg.getXmlFiles(oldpath);
 		ArrayList<String> wrong = new ArrayList<>();

@@ -26,6 +26,11 @@ import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
+/**
+ * 计算召回率、漏检数、漏检率
+ * @version 2017_11_14
+ * @author Lulech
+ * */
 public class Iou_Operation3 extends  Iou_Operation{
 		private String xmlPath;
 		private String textPath;
@@ -39,14 +44,28 @@ public class Iou_Operation3 extends  Iou_Operation{
 		private ArrayList<ArrayList<Double>> avgrrs;
 		private WritableWorkbook  workbook;
 		private WritableSheet[] sheet;
+		/**
+		 * 构造函数
+		 * @param String xml文件所在路径
+		 * @param Stirng text文件所在路径
+		 * @param String 结果文件输出路径
+		 * */
 		public Iou_Operation3(String xmlPath, String textPath, String outPath) {
 			super();
 			this.xmlPath = xmlPath;
 			this.textPath = textPath;
 			this.outPath = outPath;
 		}
-
-		public  void getIouByProNumber(ArrayList<Double> thresholds,ArrayList<Integer> proNums,boolean isEdgeBox,boolean tran) throws RowsExceededException, WriteException{
+		/**
+		 * 根据pro获得iou
+		 * @param ArrayList<Double> 阈值List
+		 * @param ArrayList<Integer> 要求proposal的数量List 
+		 * @param boolean isEdgeBox 是否是左上宽高类型的数据
+		 * @param boolean tran 是否需要调换 x,y的位置
+		 * @return void
+		 * @throws WriteException 
+		 * */
+		public  void getIouByProNumber(ArrayList<Double> thresholds,ArrayList<Integer> proNums,boolean isEdgeBox,boolean tran) throws WriteException{
 			sheet = new WritableSheet[3];
 			avgrrs = new ArrayList<>();
 			for(int i=0; i<thresholds.size(); i++){
@@ -58,7 +77,7 @@ public class Iou_Operation3 extends  Iou_Operation{
 			}
 			getInputDatas();
 			tryCreateXlsWriter();
-		     WritableCellFormat wcf = new WritableCellFormat();  
+		    WritableCellFormat wcf = new WritableCellFormat();  
 	        wcf.setAlignment(Alignment.CENTRE);
 	        wcf.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 			for(int k=0; k<3; k++){
@@ -72,8 +91,8 @@ public class Iou_Operation3 extends  Iou_Operation{
 					}
 				}
 			}
-			for(int k=0; k<xmls.size(); k++){
-				tryGetInputOneData(k, tran);
+			big: for(int k=0; k<xmls.size(); k++){
+				getInputOneData(k, tran);
 				sheet[0].addCell(new Label(0, k+2,mx.getFilename()));
 				sheet[1].addCell(new Label(0, k+2, mx.getFilename()));
 				sheet[2].addCell(new Label(0, k+2, mx.getFilename()));
@@ -87,6 +106,10 @@ public class Iou_Operation3 extends  Iou_Operation{
 					matchNums.add(getMatchNum());
 					for(int j=0; j<proNums.size(); j++){
 						int num = proNums.get(j);
+//						if(num>matchNums.get(i).size()){	
+//							System.out.println(mx.getFilename());
+//							continue big;
+//						}
 						int lostNum = gt.size()-matchNums.get(i).get(num-1);
 						double rr = rrs.get(i).get(num-1);
 						ArrayList<Double> avg = avgrrs.get(i);
@@ -104,24 +127,21 @@ public class Iou_Operation3 extends  Iou_Operation{
 					sheet[0].addCell(new Label(j+1+(thresholds.size()-1)*i, xmls.size()+2,avgrr.toString()));
 				}
 			}
-			tryWrite();
+			write();
 		}
 		
-		private void tryWrite(){
-			try {
-				write();
-			} catch (WriteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		private void write(){
+			try{
+				workbook.write();
+			}catch(Exception ex){
+				ex.printStackTrace();
+			}finally{
+				try{
+					workbook.close();
+				}catch(Exception ex){
+					ex.printStackTrace();
+				}
 			}
-		}
-		
-		private void write() throws IOException, WriteException{
-			workbook.write();
-			workbook.close();
 		}
 		
 		private void tryCreateXlsWriter(){
@@ -133,7 +153,7 @@ public class Iou_Operation3 extends  Iou_Operation{
 			}
 		}
 		
-		private void createXlsWriter() throws IOException{
+		private void createXlsWriter() throws IOException {
 			File file = new File(outPath);
 			FileIO.checkAndCreateFile(file);
 			workbook = Workbook.createWorkbook(file);
@@ -144,27 +164,14 @@ public class Iou_Operation3 extends  Iou_Operation{
 		
 		private void getInputDatas(){
 			PathGeter pg = new PathGeter();
-			pg.init();
 			 xmls = pg.getXmlFiles(xmlPath);
 			 txts= pg.getTextFiles(textPath);
 		}
 		
-		private void tryGetInputOneData(int s,boolean tran){
-			try {
-				getInputOneData(s, tran);
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (DocumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		private void getInputOneData(int s,boolean isEdgeBox) throws DocumentException, FileNotFoundException{
+		private void getInputOneData(int s,boolean tran){
 			XmlReader xr = new XmlReader();
 			TextReader tr = new TextReader();
 			mx = xr.readAll(xmls.get(s));
-			mos = tr.readBox(txts.get(s),isEdgeBox);
+			mos = tr.readBox(txts.get(s),tran);
 		}
 }

@@ -11,15 +11,26 @@ import bean.MyBox;
 import bean.MyObj;
 
 /*计算单个proposal的iou并排序*/
+/**
+ * 计算单个proposal的iou并排序
+ * @version 2017_11_14
+ * @author Lulech
+ * */
 public class Iou_Operation2 {
 	private Iou_Operation iouOp;
-
+	/**
+	 * 构造函数
+	 * */
 	public Iou_Operation2() {
 		iouOp = new Iou_Operation();
 	}
 	
-	/*
+	/**
 	 * 根据IOU排序并返回候选框
+	 * @param ArrayList<MyObj> proposals
+	 * @param ArrayList<MyObj> groundTruth
+	 * @param boolean eage 是否是左上长宽类型的数据
+	 * @return ArrayList<MyObj> proposals
 	 * */
 	public  ArrayList<MyBox> getIOURank(ArrayList<MyObj> proposals, ArrayList<MyObj> groundTruth, boolean eage) {
 		ArrayList<MyBox> pro = iouOp.ObjToBox(proposals);
@@ -39,6 +50,12 @@ public class Iou_Operation2 {
 	}
 	
 	//计算单个iou
+	/**
+	 * 计算单个iou 根据proposal和所有的groundTruth
+	 * @param MyBox proposal
+	 * @param ArrayList<MyBox> gt
+	 * @return void
+	 * */
 	public void IoUOnePro(MyBox probox, ArrayList<MyBox> gt) {
 			double iou = 0;	
 			int f=-1;
