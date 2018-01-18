@@ -1,15 +1,8 @@
 package operation;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
-
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
-import org.dom4j.DocumentException;
-
 import com.fileio.FileIO;
 import com.fileio.PathGeter;
 
@@ -24,7 +17,6 @@ import jxl.write.WritableCellFormat;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
-import jxl.write.biff.RowsExceededException;
 
 /**
  * 计算召回率、漏检数、漏检率
@@ -91,7 +83,8 @@ public class Iou_Operation3 extends  Iou_Operation{
 					}
 				}
 			}
-			big: for(int k=0; k<xmls.size(); k++){
+			System.out.println();
+			for(int k=0; k<xmls.size(); k++){
 				getInputOneData(k, tran);
 				sheet[0].addCell(new Label(0, k+2,mx.getFilename()));
 				sheet[1].addCell(new Label(0, k+2, mx.getFilename()));
