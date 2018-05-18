@@ -57,7 +57,7 @@ public class Iou_Operation3 extends  Iou_Operation{
 		 * @return void
 		 * @throws WriteException 
 		 * */
-		public  void getIouByProNumber(ArrayList<Double> thresholds,ArrayList<Integer> proNums,boolean isEdgeBox,boolean tran) throws WriteException{
+		public void getIouByProNumber(ArrayList<Double> thresholds,ArrayList<Integer> proNums,boolean isEdgeBox,boolean tran) throws WriteException{
 			sheet = new WritableSheet[3];
 			avgrrs = new ArrayList<>();
 			for(int i=0; i<thresholds.size(); i++){

@@ -3,9 +3,6 @@ package operation;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
-
-import javax.annotation.processing.Completion;
 
 import bean.MyBox;
 import bean.MyObj;
@@ -48,6 +45,22 @@ public class Iou_Operation2 {
 		});
 		return pro;
 	}
+	/**
+	 * 根据proposal数组计算IOU
+	 * @param ArrayList<MyObj> proposals
+	 * @param ArrayList<MyObj> groundTruth
+	 * @param boolean eage 是否是左上长宽类型的数据
+	 * @return ArrayList<MyObj> proposals
+	 * */
+	public  ArrayList<MyBox> getIOUP(ArrayList<MyObj> proposals, ArrayList<MyObj> groundTruth, boolean eage) {
+		ArrayList<MyBox> pro = iouOp.ObjToBox(proposals);
+		ArrayList<MyBox> gt = iouOp.ObjToBox(groundTruth);
+		if(eage) pro = iouOp.toObjEageBox(pro);
+		for(int i=0; i<pro.size(); i++){
+			IoUOnePro(pro.get(i), gt);
+		}
+		return pro;
+	}
 	
 	//计算单个iou
 	/**
@@ -68,6 +81,7 @@ public class Iou_Operation2 {
 				}
 			}
 			probox.iou = iou;
+			System.out.println(iou);
 			probox.gT=f;
 		}
 	

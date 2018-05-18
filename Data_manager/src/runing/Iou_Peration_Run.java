@@ -27,7 +27,7 @@ public class Iou_Peration_Run {
 		
 		Iou_Operation io = new Iou_Operation();
 		
-		ArrayList<MyObj> proposals= tr.readBox("file/bbs.txt", false);   //txt文件路径，是够需要交换x,y
+		ArrayList<MyObj> proposals= tr.readBox("file/203019.txt", false);   //txt文件路径，是够需要交换x,y
 	
 		
 		MyXml mx = xr.readAll("file/203019.xml");   //xml文件路径

@@ -77,6 +77,7 @@ public class TextReader {
 				MyObj obj = new MyObj();
 				String t = sc.nextLine();
 				String tm[] = t.split("\t");//以txt输出文件为准数据间的分割符 一般为 \t 和空格
+				if(tm.length<4) tm = t.split(" ");
 				if(tran){
 					obj.xmin = tm[1];
 					obj.ymin = tm[0];

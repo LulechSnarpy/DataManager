@@ -27,7 +27,7 @@ public class PathGeter {
 	public  ArrayList<String> getXmlFiles(String filePath){
 		init();
 		File root = new File(filePath);
-		PathGeter.FileFilerPlus ft = new PathGeter.FileFilerPlus(",.xml".split(","));
+		PathGeter.FileFilerPlus ft = new PathGeter.FileFilerPlus(".xml,".split(","));
 		searchFile(root, ft);
 	    return new ArrayList<>(filelist);
 	}
@@ -55,7 +55,7 @@ public class PathGeter {
 	public ArrayList<String> getTextFiles(String filePath){
 		init();
 		File root = new File(filePath);
-		PathGeter.FileFilerPlus ft = new PathGeter.FileFilerPlus(",.txt".split(","));
+		PathGeter.FileFilerPlus ft = new PathGeter.FileFilerPlus(".txt,".split(","));
 		searchFile(root, ft);
 	    return new ArrayList<>(filelist);
 	}
@@ -70,7 +70,7 @@ public class PathGeter {
 	public ArrayList<String> getImageFiles(String filePath,boolean f){
 		init();
 		File root = new File(filePath);
-		PathGeter.FileFilerPlus ft = new PathGeter.FileFilerPlus(",.png".split(","));
+		PathGeter.FileFilerPlus ft = new PathGeter.FileFilerPlus(".png,".split(","));
 		searchFile(root, ft);
 	    return new ArrayList<>(filelist);
 	}
