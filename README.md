@@ -15,8 +15,7 @@
   ### 5. Iou_Operation4_Run
       功能:计算不同IOU下图片的召回率，根据图片pro数量展示准确率。全部pro的准确率
   ### 6. Iou_Peration_Run
-      功能:计算单个文件的不同proposal数量的IOU和召回率，IOU是每个groudTruth最佳IOU，使用”:”分隔，使用“>>”表示换行
-      
+      功能:计算单个文件的不同proposal数量的IOU和召回率，IOU是每个groudTruth最佳IOU，使用":"分隔，使用">>"表示换行
   ### 7. PhotoChooser2Test
       功能:计算批量文件的不同IOU下的召回率并筛选出符合要求的文件 IOU【0.9,0.7,0.5】 筛选全部iou0.9以上是pass，0.5一下为fail
   ### 8. RankProByIouRun
