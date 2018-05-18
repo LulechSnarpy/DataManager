@@ -33,3 +33,6 @@
       
   ### 10. XmlFormatChangerAllRun
       功能:改变之前生成的xml中部分的字符大小问题  具体请修改XmlWriter文件中的输出
+      
+  ### 11. Iou_Operation5_Run
+      功能:算出每个候选框的IoU。每行一个候选框， 左上角x, y, 长（水平方向长度），宽（垂直方向长度，
