@@ -19,6 +19,11 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 
+/**
+ * 计算Proposal的IOU
+ * @version 2018_05_19
+ * @author Lulech
+ * */
 public class Iou_Operation5 extends Iou_Operation2{
 	private String xmlPath;
 	private String textPath;
@@ -59,8 +64,8 @@ public class Iou_Operation5 extends Iou_Operation2{
 			WritableSheet sheet = workbook.createSheet(mx.getFilename(), 0);
 			sheet.addCell(new Label(0, 0, "左上x坐标"));
 			sheet.addCell(new Label(1, 0, "左上y坐标"));
-			sheet.addCell(new Label(2, 0, "宽"));
-			sheet.addCell(new Label(3, 0, "高"));
+			sheet.addCell(new Label(2, 0, "长"));
+			sheet.addCell(new Label(3, 0, "宽"));
 			sheet.addCell(new Label(4, 0, "IOU"));
 			for(int j=0; j<mbs.size();j++){
 				MyBox mb = mbs.get(j);

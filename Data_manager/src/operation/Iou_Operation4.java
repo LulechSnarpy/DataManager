@@ -19,7 +19,10 @@ import jxl.write.WritableCellFormat;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
-
+/**
+ * 计算准确率，准确个数
+ * @author Lulech
+ * */
 public class Iou_Operation4 extends Percision_Operation{
 	private String xmlPath;
 	private String textPath;
