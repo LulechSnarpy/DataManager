@@ -18,7 +18,7 @@ import bean.MyXml;
 import filereaders.XmlReader;
 
 /*根据识别难度、遮挡面积、阴影筛选图片，识别难度低，遮挡面积小，没有阴影的图片*/
-public class Iou_files_test3 {
+public class Iou_files_Run3 {
 	private static String oldpath = "G://6666666666666666666//";  //待筛选的文件夹路径
 	private static String newpath = "E://z//";			//输出的文件夹路径
 	 

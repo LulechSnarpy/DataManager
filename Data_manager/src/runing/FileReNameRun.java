@@ -7,8 +7,8 @@ import com.fileio.PathGeter;
 
 import filecorrector.ReName;
 
-/*修正部分图片为jpg，实际需要png的执行程序*/
-public class FileReNameTest {
+/*修正部分图片为jpg，实际需要png的执行程序  重命名*/
+public class FileReNameRun {
 	public static void main(String[] args) {
 		ReName rn = new ReName();
 		PathGeter pg = new PathGeter();

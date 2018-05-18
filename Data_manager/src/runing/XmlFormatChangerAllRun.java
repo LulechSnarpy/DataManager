@@ -11,8 +11,8 @@ import bean.MyXml;
 import filereaders.XmlReader;
 import filewriters.XmlWriter;
 
-/*改变之前生成的xml中部分的字符大小问题*/
-public class XmlFormatChangerAllTest {
+/*改变之前生成的xml中部分的字符大小问题  具体请修改XmlWriter文件中的输出*/
+public class XmlFormatChangerAllRun {
 
 	public static void main(String[] args) {
 		PathGeter pg = new PathGeter();

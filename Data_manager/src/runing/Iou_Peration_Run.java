@@ -19,7 +19,7 @@ import filereaders.XmlReader;
 import operation.Iou_Operation;
 
 /*单个文件的IOU和召回率*/
-public class Iou_Peration_test {
+public class Iou_Peration_Run {
 	public static void main(String[] args) throws DocumentException, IOException {
 		
 		XmlReader xr = new XmlReader();

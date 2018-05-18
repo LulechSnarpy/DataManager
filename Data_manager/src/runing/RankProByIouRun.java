@@ -15,7 +15,7 @@ import jxl.write.biff.RowsExceededException;
 import operation.Iou_Operation2;
 
 /*将proposal根据iou排序并输出结果*/
-public class RankProByIou {
+public class RankProByIouRun {
 	/*
 	 * @path  xls输出路径
 	 * @path1 xml路径
