@@ -26,11 +26,11 @@ public class Iou_Peration_Run {
 		TextReader tr = new TextReader();
 		
 		Iou_Operation io = new Iou_Operation();
-		
-		ArrayList<MyObj> proposals= tr.readBox("file/203019.txt", false);   //txt文件路径，是够需要交换x,y
+		//file/203019.txt
+		ArrayList<MyObj> proposals= tr.readBox("G:/算法/测试point/100/100001.txt", false);   //txt文件路径，是够需要交换x,y
 	
-		
-		MyXml mx = xr.readAll("file/203019.xml");   //xml文件路径
+		//file/203019.xml
+		MyXml mx = xr.readAll("G:/算法/测试point/100xml/100001.xml");   //xml文件路径
 		
 		ArrayList<MyObj> groundTruth = mx.getObj();
 		
@@ -43,8 +43,8 @@ public class Iou_Peration_Run {
 		ArrayList<ArrayList<Double>> iou = io.getIoulist();
 		
 		Iterator<ArrayList<Double>> iout = iou.iterator();
-		
-		File f= new File("file/OutIou_203019.txt");			//iou输出文件路径
+		//file/OutIou_203019.txt
+		File f= new File("file/OutIou_100001.txt");			//iou输出文件路径
 		if(!f.exists()) f.createNewFile();
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
 		while(iout.hasNext()){
@@ -58,8 +58,8 @@ public class Iou_Peration_Run {
 			bw.write(z.toString());
 		}
 		bw.close();
-		
-		f = new File("file/OutRecallrate_203019.txt");  //召回率输出文件路径
+		//file/OutRecallrate_203019.txt
+		f = new File("file/OutRecallrate_100001.txt");  //召回率输出文件路径
 		if(!f.exists()) f.createNewFile();
 		bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
 		for(int i=0; i<rr.size(); i++){
